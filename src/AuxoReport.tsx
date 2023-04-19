@@ -37,14 +37,6 @@ function pc(vedough: number | string, auxo: number | string) {
   return parseFloat(String((1-Number(vedough)/(Number(auxo)*100+Number(vedough)))*100)).toFixed(2)
 }
 
-function arvprv(arv: number | string, prv: number | string) {
-  const nArv = Number(arv)
-  const nPrv = Number(prv)
-  const total = nArv + nPrv
-  const arvPc = (nArv/total)*100
-  const prvPc = (nPrv/total)*100
-  return `${arvPc.toFixed(0)}/${prvPc.toFixed(0)}  ARV/PRV`
-}
 
 function calculateRatios(_arv: string | number, _prv: string | number) {
   const arv = Number(_arv);
