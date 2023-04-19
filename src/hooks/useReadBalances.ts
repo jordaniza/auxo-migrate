@@ -27,6 +27,11 @@ export function useReadBalances() {
         functionName: "totalSupply",
       } as any,
       {
+        ...auxo,
+        functionName: "balanceOf",
+        args: ["0x3E70FF09C8f53294FFd389a7fcF7276CC3d92e64"],
+      } as any,
+      {
         ...arv,
         functionName: "totalSupply",
       } as any,
