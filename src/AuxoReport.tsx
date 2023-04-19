@@ -8,7 +8,7 @@ const format = (data?: BigNumber) => data ? Math.round(Number(ethers.utils.forma
 
 const createChartData = (data: any) => {
   return {
-    labels: ["Auxo Minted", "Auxo Staked", "ARV Minted", "PRV Minted", "PRV Staked"],
+    labels: ["Auxo Migrated", "Auxo Locked ARV", "ARV Supply", "PRV Supply", "PRV Staked"],
     datasets: [
       {
         label: "Total",
@@ -34,7 +34,7 @@ const createChartData = (data: any) => {
 };
 
 function pc(vedough: number | string, auxo: number | string) {
-  return parseFloat(String((Number(vedough)/(Number(auxo)*100+Number(vedough)))*100)).toFixed(2)
+  return parseFloat(String((1-Number(vedough)/(Number(auxo)*100+Number(vedough)))*100)).toFixed(2)
 }
 
 function arvprv(arv: number | string, prv: number | string) {
@@ -129,10 +129,10 @@ const AuxoReport: React.FC = () => {
       </header>
       <section className="text">
         <p>
-          {data ? auxo.toLocaleString() : '...'} Auxo Minted {data && `- ${arvprv(arv, prv)}`}
+          {data ? auxo.toLocaleString() : '...'} Auxo Minted {`(${pc(vedough, auxo)}% Complete)`}
         </p>
         <p>
-        {veDoughData ? `${vedough.toLocaleString()} (${pc(vedough, auxo)}%)` : '...'} veDOUGH remaining
+        {veDoughData ? `${vedough.toLocaleString()}` : '...'} veDOUGH remaining
         </p>
         <div>
         <Ratio arv={arv} prv={prv} />
